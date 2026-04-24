@@ -1,7 +1,8 @@
-// frontend/src/services/api.js
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'https://blogging-6h9z.onrender.com/api' });
+const API = axios.create({ 
+  baseURL: 'https://blogging-6h9z.onrender.com/api' 
+});
 
 API.interceptors.request.use((req) => {
   const token = localStorage.getItem('token');
@@ -18,7 +19,7 @@ export const authAPI = {
 };
 
 export const postsAPI = {
-  getAll: (page = 1, tag = '') => API.get(`/posts?page=${page}&tag=${tag}`),
+  getAll: () => API.get('/posts'),
   getOne: (id) => API.get(`/posts/${id}`),
   create: (postData) => API.post('/posts', postData),
   update: (id, postData) => API.put(`/posts/${id}`, postData),
